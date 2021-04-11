@@ -1,0 +1,14 @@
+.presentacion-imagen {
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.presentacion-imagen:hover {
+  opacity: 0.4;
+}
+
+.presentacion-titulo {
+  margin: 0 !important;
+  font-weight: 500;
+  font-size: 17px;
+}

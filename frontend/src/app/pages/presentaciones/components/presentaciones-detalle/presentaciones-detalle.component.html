@@ -1,0 +1,47 @@
+
+
+<section class="container pt-4 pb-4" >
+
+
+
+  <mat-card>
+    <div style="padding: 100px;" *ngIf="!slide">
+      <jp-spinner></jp-spinner>
+    </div>
+    <div *ngIf="slide">
+      <mat-card-header class="mb-3">
+        <mat-card-title style="font-size: 24px">{{ slide.titulo }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-sm-7">
+            <img class="img-fluid d-block img-thumbnail" [src]="'https://lh3.google.com/u/0/d/' + slide.presentacionId"
+            onerror="this.src = '/assets/imgs/no-image.jpg'" [alt]="slide.titulo" />
+          </div>
+          <div class="col-sm-5">
+            <h3>Titulo</h3>
+            <p>{{ slide.titulo || '-' }}</p>
+            <div *ngIf="slide.presentacionId">
+              <h3>Fecha</h3>
+              <p>{{ slide.date || '-' }}</p>
+              <div *ngIf="slide.exportpptx">
+                <h3>Exportar a: </h3>
+                <p>
+                  <a class="link" target="_blank" [href]="slide.exportpdf" mat-button class="mr-2" color="primary">PDF</a>
+                  <a class="link" target="_blank" [href]="slide.exportpptx" color="primary" mat-button>POWER POINT</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <div fxFlex></div>
+        <button mat-button color="primary" (click)="editar()" class="mr-3">Editar</button>
+        <button mat-button color="primary" (click)="eliminar()" class="mr-3">Eliminar</button>
+        <button mat-button color="primary" (click)="volver()">Volver</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</section>

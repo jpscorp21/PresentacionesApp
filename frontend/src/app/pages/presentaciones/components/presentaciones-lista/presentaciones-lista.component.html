@@ -1,0 +1,53 @@
+<section class="container pt-4 pb-4">
+  <mat-card>
+
+    <!-- TITULO -->
+    <mat-card-header class="mb-3">
+      <mat-card-title>Mis presentaciones</mat-card-title>
+    </mat-card-header>
+
+    <!-- NUEVO -->
+    <button mat-raised-button (click)="nuevo()" class="mb-3" color="primary">Nueva presentación</button>
+
+    <!-- BUSQUEDA -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Buscar</mat-label>
+      <input #busqueda matInput placeholder="Buscar presentaciones">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <!-- PRESENTACIONES -->
+    <div style="padding: 100px;" *ngIf="presentacionesSrv.loading$ | async">
+      <jp-spinner></jp-spinner>
+    </div>
+    <!-- <p>
+      Ordernar por:
+      <button mat-button>Recientes</button>
+      <button mat-button>Antiguos</button>
+    </p> -->
+
+    <div *ngIf="(presentacionesSrv.mensaje$ | async) as mensaje">
+      <p>{{ mensaje }}</p>
+    </div>
+
+
+    <!-- PRESENTACIONES
+    <div style="padding: 100px;" *ngIf="!presentaciones$">
+        <jp-spinner></jp-spinner>
+    </div> -->
+
+
+
+    <div class="row" *ngIf="(presentacionesSrv.presentaciones$ | async)">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let p of (presentacionesSrv.presentaciones$ | async) | presentacionesfecha: 'nue'">
+        <jp-presentacion
+          [presentacion]="p"
+          (ver)="ver(p)"
+          (eliminar)="eliminar(p)"
+          (cambioFavorito)="cambioFavorito($event)">
+        </jp-presentacion>
+      </div>
+    </div>
+
+  </mat-card>
+</section>

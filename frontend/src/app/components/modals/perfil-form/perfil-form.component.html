@@ -1,0 +1,50 @@
+<!-- <section class="centrado container mb-4"> -->
+
+
+      <!-- TITUTLO -->
+      <h1 mat-dialog-title>Perfil</h1>
+
+      <!-- CONTENIDO DEL FORM -->
+      <div mat-dialog-content>
+
+        <form [formGroup]="form" (ngSubmit)="actualizar()">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="nombre">
+            <mat-error>
+              <jp-control-error [control]="form.get('nombre')"></jp-control-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellido" formControlName="apellido">
+            <mat-error>
+              <jp-control-error [control]="form.get('apellido')"></jp-control-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input type="email" matInput placeholder="Correo" formControlName="correo">
+            <mat-error>
+              <jp-control-error [control]="form.get('correo')"></jp-control-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Usuario" formControlName="usuario">
+            <mat-error>
+              <jp-control-error [control]="form.get('usuario')"></jp-control-error>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="pt-2">
+            <button mat-raised-button color="primary" class="mr-2" [disabled]="!perfilFrm.valid">Actualizar</button>
+            <button mat-raised-button color="primary" class="mr-2" (click)="cerrar()" type="button">Cerrar</button>
+          </div>
+
+        </form>
+
+      </div>
+
+  <!-- </section> -->
+

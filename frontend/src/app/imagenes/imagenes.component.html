@@ -1,0 +1,16 @@
+<div class="p-4">
+  <button mat-raised-button color="primary" class="mb-3" (click)="cargarImagen()">Aceptar</button>
+  <mat-card *ngIf="imagenes$">
+    <p class="titulo">Seleccionar una imagen</p>
+    <mat-card-content>
+      <div class="row">
+        <div *ngFor="let img of imagenes$ | async" (click)="seleccionarImagen(img)" class="col-sm-4 col-md-3">
+          <img class="img-fluid" [src]="img.imageURL" [ngStyle]="{'opacity': img.imageURL === imageURL ? '0.4' : null}" />
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,47 @@
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class="sidenav" #sidenav [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
+      <div class="img-perfil">
+        <img class="rounded-circle" [src]="perfil.thumbnail" [alt]="perfil.usuario" />
+        <p>{{perfil.usuario}}</p>
+      </div>
+      <mat-nav-list class="mt-4">
+
+        <a mat-list-item [routerLink]="'/pages/presentaciones/lista'">
+         <mat-icon class="mr-2">picture_in_picture</mat-icon> <span>Presentaciones</span>
+        </a>
+        <a mat-list-item [routerLink]="'/pages/presentaciones/favorito'">
+          <mat-icon class="mr-2">favorite</mat-icon> <span>Favoritos</span>
+        </a>
+        <a mat-list-item [routerLink]="'/documentacion'">
+          <mat-icon class="mr-2">description</mat-icon> <span>Documentación</span>
+        </a>
+        <a mat-list-item (click)="salir()">
+          <mat-icon class="mr-2">exit_to_app</mat-icon> <span>Salir</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    <div style="height: 100vh; overflow: auto;">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button class="text-center" mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <h1 [routerLink]="'/pages/presentaciones/lista'" style="cursor: pointer">Presentaciones</h1>
+          <span class="menu-spacer"></span>
+          <div *ngIf="!modoTabled">
+            <!-- <button mat-button [matMenuTriggerFor]="menu2">
+              <mat-icon>person</mat-icon> <span class="usuario">Usuario</span>
+            </button> -->
+            <mat-menu #menu2="matMenu">
+              <div mat-menu-item (click)="salir()">Salir</div>
+            </mat-menu>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

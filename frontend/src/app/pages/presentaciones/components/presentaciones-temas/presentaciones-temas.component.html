@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Selecciona un tema</h1>
+<div mat-dialog-content>
+  <p>Elige un tema para generar la presentación</p>
+  <div class="row">
+    <div *ngFor="let t of themes.THEMES" (click)="selectTheme(t)" class="col-sm-4 col-md-3">
+
+          <img [ngStyle]="{'opacity': t.name === control.value ? '0.4' : null}" class="img-fluid d-block" [src]="'https://lh3.google.com/u/0/d/' + t.id"
+          onerror="this.src = '/assets/imgs/no-image.jpg'" [alt]="t.titulo" />
+          <p>{{ t.name }}</p>
+    </div>
+
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <div fxFlex></div>
+  <button mat-button (click)="cerrar()" type="button">Aceptar</button>
+</div>
+
+

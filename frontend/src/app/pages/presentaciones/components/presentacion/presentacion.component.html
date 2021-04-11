@@ -1,0 +1,23 @@
+<mat-card class="mb-4">
+  <img (click)="ver.emit(presentacion)" class="presentacion-imagen" mat-card-image [src]="'https://lh3.google.com/u/0/d/' + presentacion.presentacionId"
+  onerror="this.src = '/assets/imgs/no-image.jpg'" [alt]="presentacion.titulo" />
+  <mat-card-content style="margin: 0">
+    <div class="row" style="padding: 0">
+      <div class="col-7 col-sm-8">
+        <h3 class="presentacion-titulo">{{ presentacion.titulo }}</h3>
+      </div>
+      <div class="col-5 col-sm-4">
+        <div fxFlex></div>
+        <button mat-icon-button color="warn" (click)="cambioFavorito.emit(presentacion)">
+          <mat-icon *ngIf="presentacion.esFavorito; else nofavorito">favorite</mat-icon>
+          <ng-template #nofavorito>
+            <mat-icon>favorite_border</mat-icon>
+          </ng-template>
+        </button>
+        <button mat-icon-button color="primary" (click)="eliminar.emit(presentacion)" *ngIf="mostrarEliminar">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

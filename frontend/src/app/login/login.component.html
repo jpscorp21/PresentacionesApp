@@ -1,0 +1,49 @@
+<div class="fondo">
+  <section class="centrado container mb-4 login">
+    <mat-card>
+      <!-- TITUTLO -->
+      <mat-card-header>
+        <mat-card-title class="title">Presentación App</mat-card-title>
+        <mat-card-title class="subtitle">Inicio Sesión</mat-card-title>
+      </mat-card-header>
+
+      <!-- CONTENIDO DEL FORM -->
+      <mat-card-content class="p-3">
+        <button
+          (click)="loginGoogle()"
+          color="primary"
+          mat-raised-button
+          class="mr-2"
+          style="width: 100%; margin-bottom: 0px;"
+        >
+          Entrar
+        </button>
+
+        <!-- <form [formGroup]="form" (ngSubmit)="login()">
+
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Usuario" formControlName="usuario">
+              <mat-error>
+                <jp-control-error [control]="form.get('usuario')"></jp-control-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <input type="password" matInput placeholder="Contraseña" formControlName="password">
+              <mat-error>
+                <jp-control-error [control]="form.get('password')"></jp-control-error>
+              </mat-error>
+            </mat-form-field>
+
+            <div class="pt-2">
+              <button mat-raised-button color="primary" class="mr-2" [disabled]="!loginFrm.valid">Entrar</button>
+            </div>
+
+          </form> -->
+        <!-- <div class="mt-3">
+            <a [routerLink]="'/register'">Registrarse</a>
+          </div> -->
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

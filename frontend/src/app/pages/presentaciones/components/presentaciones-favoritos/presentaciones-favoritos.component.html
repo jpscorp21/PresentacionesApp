@@ -1,0 +1,35 @@
+<section class="container pt-4 pb-4">
+  <mat-card>
+
+    <!-- TITULO -->
+    <mat-card-header class="mb-3">
+      <mat-card-title>Favoritos</mat-card-title>
+    </mat-card-header>
+
+    <!-- PRESENTACIONES -->
+    <div style="padding: 100px;" *ngIf="presentacionesSrv.loading$ | async">
+        <jp-spinner></jp-spinner>
+    </div>
+
+    <div *ngIf="(presentacionesSrv.mensajeFavorito$ | async) as mensaje">
+      <p>{{ mensaje }}</p>
+    </div>
+
+    <div class="row" *ngIf="(presentaciones$ | async);">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let p of (presentaciones$ | async) | presentacionesfecha: 'nue'">
+        <jp-presentacion
+          [presentacion]="p"
+          (ver)="ver(p)"
+          (cambioFavorito)="cambioFavorito($event)"
+          [mostrarEliminar]="false">
+        </jp-presentacion>
+      </div>
+      <!-- <ng-template #nohayfavoritos>
+          <div>
+            <p>No hay favoritos...</p>
+          </div>
+      </ng-template> -->
+    </div>
+
+  </mat-card>
+</section>
